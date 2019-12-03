@@ -33,6 +33,7 @@ XT_QUIRK_UNPACK_SRC_URI += " \
 
 XT_QUIRK_BB_ADD_LAYER += " \
     meta-xt-prod-extra \
+    meta-aos \
 "
 
 ################################################################################
