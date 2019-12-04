@@ -1,6 +1,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
-
 ###############################################################################
 # extra layers and files to be put after Yocto's do_unpack into inner builder
 ###############################################################################
@@ -18,8 +17,10 @@ XT_QUIRK_BB_ADD_LAYER_append = " \
 # Generic ARMv8
 ################################################################################
 SRC_URI += " \
-    repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_aos/domf.xml;scmdata=keep \
+     repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/domf.xml;scmdata=keep\
 "
+
+#repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/domf.xml;scmdata=keep 
 
 SRCREV_metago = "${AUTOREV}"
 

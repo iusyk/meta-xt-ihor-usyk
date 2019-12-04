@@ -6,7 +6,7 @@ do_configure[depends] += "domd-image-minimal:do_domd_install_machine_overrides"
 #domd-image-weston:do_domd_install_machine_overrides"
 
 SRC_URI = " \
-    repo://github.com/xen-troops/manifests;protocol=https;branch=master;manifest=prod_devel/domu.xml;scmdata=keep \
+    repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/domu.xml;scmdata=keep \
 "
 
 XT_QUIRK_UNPACK_SRC_URI += " \

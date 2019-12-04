@@ -17,11 +17,12 @@ python __anonymous () {
 }
 
 SRC_URI = " \
-    repo://github.com/xen-troops/manifests;protocol=https;branch=master;manifest=${XT_MANIFEST_FOLDER}/domd.xml;scmdata=keep \
+     repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/domd.xml;scmdata=keep\
 "
+#repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_ihor_usyk/domd.xml;scmdata=keep 
 
 SRC_URI_crown = " \
-    repo://github.com/xen-troops/manifests;protocol=https;branch=master;manifest=${XT_MANIFEST_FOLDER}/domd.xml;scmdata=keep \
+    repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_ihor_usyk/domd.xml;scmdata=keep \
     git://github.com/iusyk/meta-calc;protocol=https;branch=master; \
 "
 

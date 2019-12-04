@@ -8,7 +8,8 @@ do_fetch[depends] += "domu-image-fusion:do_${BB_DEFAULT_TASK}"
 ################################################################################
 # Generic ARMv8
 ################################################################################
-SRC_URI = "repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_aos/dom0.xml;scmdata=keep"
+SRC_URI = "repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/dom0.xml;scmdata=keep"
+#"repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_ihor_usyk/dom0.xml;scmdata=keep"
 
 ###############################################################################
 # extra layers and files to be put after Yocto's do_unpack into inner builder
