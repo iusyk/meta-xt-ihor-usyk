@@ -252,13 +252,13 @@ MULTI_PROVIDER_WHITELIST += "virtual/libgl virtual/egl virtual/libgles1 virtual/
 
 # for Wayland/Weston
 DISTRO_FEATURES_NATIVESDK_append = " wayland"
-DISTRO_FEATURES_append = " pam wayland"
+DISTRO_FEATURES_append = " pam"
 PREFERRED_PROVIDER_virtual/libgles1 = ""
 PREFERRED_PROVIDER_virtual/libgles2 = "gles-user-module"
 PREFERRED_PROVIDER_virtual/egl = "libegl"
 PREFERRED_PROVIDER_virtual/libgl = ""
 PREFERRED_PROVIDER_virtual/mesa = ""
-PREFERRED_PROVIDER_libgbm = "libgbm"
+PREFERRED_PROVIDER_virtual/libgbm = "libgbm"
 PREFERRED_PROVIDER_libgbm-dev = "libgbm"
 BBMASK .= "|mesa-gl"
 
@@ -381,5 +381,7 @@ LICENSE_FLAGS_WHITELIST = "commercial"
 DISTRO_FEATURES_remove = " x11 gtk gobject-introspection-data wifi nfc bluetooth irda zeroconf 3g"
 ASSUME_PROVIDED += "sync-native"
 HOSTTOOLS += "sync"
+ASSUME_PROVIDED += "bison-native"
+HOSTTOOLS += "bison"
 
 include ${@d.getVar('XT_SHARED_ROOTFS_DIR', True) or ''}/local.conf.domd_machine.inc

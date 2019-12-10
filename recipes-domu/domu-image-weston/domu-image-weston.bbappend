@@ -2,7 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../recipes-domx:"
 
-do_configure[depends] += "domd-image-minimal:do_domd_install_machine_overrides"
+do_configure[depends] += "domd-image-weston:do_domd_install_machine_overrides"
 #domd-image-weston:do_domd_install_machine_overrides"
 
 XT_PRODUCT_NAME ?= "ihor-usyk"

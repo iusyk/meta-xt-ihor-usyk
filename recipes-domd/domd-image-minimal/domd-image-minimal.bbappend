@@ -6,20 +6,19 @@ IMAGE_INSTALL_crown_append = " \
    meta-calc \
 "
 
-XT_PRODUCT_NAME ?= "prod-aos"
+XT_PRODUCT_NAME ?= "ihor-usyk"
 
 python __anonymous () {
     product_name = d.getVar('XT_PRODUCT_NAME', True)
     folder_name = product_name.replace("-", "_")
     d.setVar('XT_MANIFEST_FOLDER', folder_name)
-    if product_name == "prod-aos":
+    if product_name == "ihor-usyk":
         d.appendVar("XT_QUIRK_BB_ADD_LAYER", "meta-aos")
 }
 
 SRC_URI = " \
-     repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/domd.xml;scmdata=keep\
+    repo://github.com/iusyk/manifests;protocol=https;branch=ihor_prod;manifest=prod_ihor_usyk/domd.xml;scmdata=keep \
 "
-#repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_ihor_usyk/domd.xml;scmdata=keep 
 
 SRC_URI_crown = " \
     repo://github.com/iusyk/manifests;protocol=https;branch=master;manifest=prod_ihor_usyk/domd.xml;scmdata=keep \
@@ -34,7 +33,6 @@ XT_QUIRK_UNPACK_SRC_URI += " \
 
 XT_QUIRK_BB_ADD_LAYER += " \
     meta-xt-prod-extra \
-    meta-aos \
 "
 
 ################################################################################
@@ -55,6 +53,12 @@ configure_versions_kingfisher() {
     base_add_conf_value ${local_conf} DISTRO_FEATURES_remove " opencv-sdk"
     # Do not enable surroundview which cannot be used
     base_add_conf_value ${local_conf} DISTRO_FEATURES_remove " surroundview"
+    base_update_conf_value ${local_conf} PACKAGECONFIG_remove_pn-libcxx "unwind"
+
+   # Remove the following if we use prebuilt EVA proprietary "graphics" packages
+    if [ ! -z ${XT_RCAR_EVAPROPRIETARY_DIR} ];then
+        base_update_conf_value ${local_conf} PACKAGECONFIG_remove_pn-cairo " egl glesv2"
+    fi
 }
 
 python do_configure_append_h3ulcb-4x2g-kf() {
@@ -88,6 +92,8 @@ XT_QUIRK_PATCH_SRC_URI_rcar = "\
 
 XT_BB_LOCAL_CONF_FILE_rcar = "meta-xt-prod-extra/doc/local.conf.rcar-domd-image-minimal"
 XT_BB_LAYERS_FILE_rcar = "meta-xt-prod-extra/doc/bblayers.conf.rcar-domd-image-minimal"
+
+GLES_VERSION_rcar = "1.10"
 
 configure_versions_rcar() {
     local local_conf="${S}/build/conf/local.conf"
@@ -141,7 +147,7 @@ python do_configure_append_rcar() {
 }
 
 do_install_append () {
-    local LAYERDIR=${TOPDIR}/../meta-xt-prod-aos
+    local LAYERDIR=${TOPDIR}/../meta-xt-ihor-usyk
     find ${LAYERDIR}/doc -iname "u-boot-env*" -exec cp -f {} ${DEPLOY_DIR}/domd-image-minimal/images/${MACHINE}-xt \; || true
     find ${LAYERDIR}/doc -iname "mk_sdcard_image.sh" -exec cp -f {} ${DEPLOY_DIR}/domd-image-minimal/images/${MACHINE}-xt \; \
     -exec cp -f {} ${DEPLOY_DIR} \; || true
