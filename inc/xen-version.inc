@@ -5,4 +5,4 @@
 ################################################################################
 require ../meta-xt-images-domx/recipes-extended/xen/xen-4.13-thud.inc
 
-SRC_URI = "git://github.com/xen-troops/xen.git;protocol=https;branch=master"
+SRC_URI = "git://github.com/xen-troops/xen.git;protocol=https;branch=xen-4.13rc-migration"
